@@ -16,6 +16,8 @@
     "lib": "./lib",
     "example": [ "./example/example.js" ]
   },
-  "engines": [ "node >= 0.2.0 < 0.3.0" ],
+  "engines": {
+      "node": ">= 0.2.0 < 0.3.0"
+  },
   "main": "index"
 }
