@@ -36,7 +36,7 @@ Parameters:
     yubico.verify_multi(otp_list, max_time_window, timeout, callback)
 
 * `otp_list` - an array of Yubikey tokens. Tokens are validated in the provided order so the order matters (tokens must be provided in the same order as they were generated)
-* `max_time_window` - how much time can pass between the first token and the last token generation so that the result is still considered valid (defaults to `40` - 5 seconds - 40 * 0.125)
+* `max_time_window` - how many seconds can pass between the first token and the last token generation so that the result is still considered valid (defaults to 5 seconds)
 * `timeout` - connection timeout in seconds (defaults to 15 seconds)
 * `callback` - a callback which is called with an error as the first argument if the Yubikey validation fails and `true` as the second one if the provided token is valid.
 
