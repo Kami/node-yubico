@@ -54,4 +54,13 @@ Example is located in `example/example.js`.
 
 # History
 
-28.12.2010 - Initial release
+31.12.2010 - v0.1.1:
+
+* Verify time window in the multi mode
+* Throw exception if none or only a single token is provided in the multi mode
+* Always take "max_time_window" argument in seconds and convert it internally
+* Add tests
+
+28.12.2010 - v0.1.0:
+
+* Initial release
