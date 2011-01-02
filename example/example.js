@@ -13,15 +13,21 @@ else {
     argv = argv.slice(1);
 }
 
-var mode = (argv[0] === 'single') ? 'single' : 'multi';
+var mode = argv[0];
+
+if ([ 'single', 'multi' ].indexOf(mode) === -1) {
+    sys.puts('Usage: node example.js single|multi client_id [secret_key|null] otp [otp 2]');
+    process.exit(1);
+}
+
 var expected_args = (mode === 'single') ? 3 : 4;
 
 var func, args;
 argv = argv.slice(1);
 
 if (argv.length !== expected_args) {
-    args = (mode === 'single') ? 'client_id [secret_key] otp' :
-                                        'client_id [secret_key] otp_1 otp_2';
+    args = (mode === 'single') ? 'single client_id [secret_key] otp' :
+                                  'multi client_id [secret_key] otp_1 otp_2';
     sys.puts(sprintf('Usage: node example.js %s', args));
     process.exit(1);
 }
