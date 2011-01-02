@@ -16,6 +16,9 @@
     "lib": "./lib",
     "example": [ "./example/example.js" ]
   },
+  "scripts": {
+     "test": "make test"
+  },
   "engines": {
       "node": ">= 0.2.0 < 0.3.0"
   },
