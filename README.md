@@ -54,6 +54,12 @@ Example is located in `example/example.js`.
 
 # History
 
+02.02.2010 - v0.1.2:
+
+* Allow package to be used with node >= 0.3.0
+* Don't use https if node version >= 0.3.0 or use_https equals False
+* Update tests so it works with a new version of expresso
+
 31.12.2010 - v0.1.1:
 
 * Verify time window in the multi mode
