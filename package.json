@@ -1,7 +1,7 @@
 {
   "name": "yubico",
   "description": "Node library for validating Yubico One Time Passwords (OTPs) based on the validation protocol version 2.0.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Tomaz Muraus <tomaz+npm@tomaz.me> http://www.tomaz.me",
   "keywords": [ "yubikey", "yubico", "otp", "one-time password" ],
   "homepage": "https://github.com/Kami/node-yubico",
@@ -20,7 +20,7 @@
      "test": "make test"
   },
   "engines": {
-      "node": ">= 0.2.0 < 0.3.0"
+      "node": ">= 0.2.0"
   },
   "main": "index"
 }
