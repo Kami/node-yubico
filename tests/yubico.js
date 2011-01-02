@@ -1,14 +1,16 @@
+var assert = require('assert');
+
 var Yubico = require('../lib/yubico').Yubico;
 var OTP = require('../lib/otp').OTP;
 
-exports['test otp class'] = function(assert, beforeExit) {
+exports['test otp class'] = function(beforeExit) {
     var otp = new OTP('vvegvftndfilcrfhrbggkfrbbijegfbgfgttjbtdtcnt');
 
     assert.equal(otp.get_otp(), 'vvegvftndfilcrfhrbggkfrbbijegfbgfgttjbtdtcnt');
     assert.equal(otp.get_device_id(), 'vvegvftndfil');
 };
 
-exports['test _parse_parameters_from_response'] = function(assert, beforeExit) {
+exports['test _parse_parameters_from_response'] = function(beforeExit) {
     var response = 'h=ckbn7gh0C/qsTciVqcxpQ8yOqWY=\n' +
                    't=2010-12-30T14:30:12Z0264\n' +
                    'otp=vvegefendfulhrrihgvibljnnnbikjhnbrtfjlkltvvg\n' +
@@ -28,7 +30,7 @@ exports['test _parse_parameters_from_response'] = function(assert, beforeExit) {
     assert.equal(query_string, result[1]);
 };
 
-exports['test _query_string_to_object'] = function(assert, beforeExit) {
+exports['test _query_string_to_object'] = function(beforeExit) {
     var query_string = 't=2010-12-30T14:30:12Z0264&otp=vvegefendfulhrrihgvibljnnnbikjhnbrtfjlkltvvg&nonce=UlVyeUFvU1lVM3FLT0tIeHczWUJpN0&sl=75&timestamp=10222212&sessioncounter=1563&sessionuse=3&status=OK';
     var obj = {
         't': '2010-12-30T14:30:12Z0264',
@@ -47,7 +49,7 @@ exports['test _query_string_to_object'] = function(assert, beforeExit) {
     assert.deepEqual(obj, result);
 };
 
-exports['test _generate_message_signature'] = function(assert, beforeExit) {
+exports['test _generate_message_signature'] = function(beforeExit) {
     var query_string = 'foo=bar&bar=baz';
     var key = 'key1234';
     var signature = 'NDzpNpiUsBXWYtLS+F+BmATz+w4=';
@@ -58,7 +60,7 @@ exports['test _generate_message_signature'] = function(assert, beforeExit) {
     assert.equal(signature, result);
 };
 
-exports['test _generate_query_string'] = function(assert, beforeExit) {
+exports['test _generate_query_string'] = function(beforeExit) {
     var otp = 'vvegefendfulhrrihgvibljnnnbikjhnbrtfjlkltvvg';
     var nonce = 'UlVyeUFvU1lVM3FLT0tIeHczWUJpN0';
     var timestamp = true;
