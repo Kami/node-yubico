@@ -16,8 +16,11 @@
     "lib": "./lib",
     "example": [ "./example/example.js" ]
   },
+  "devDependencies": {
+    "whiskey": "0.6.9"
+  },
   "scripts": {
-     "test": "make test"
+    "test": "./scripts/tests.sh"
   },
   "engines": {
       "node": ">= 0.2.0"
