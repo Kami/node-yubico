@@ -3,14 +3,15 @@ var assert = require('assert');
 var Yubico = require('../lib/yubico').Yubico;
 var OTP = require('../lib/otp').OTP;
 
-exports['test otp class'] = function(beforeExit) {
+exports['test otp class'] = function(test, assert) {
     var otp = new OTP('vvegvftndfilcrfhrbggkfrbbijegfbgfgttjbtdtcnt');
 
     assert.equal(otp.get_otp(), 'vvegvftndfilcrfhrbggkfrbbijegfbgfgttjbtdtcnt');
     assert.equal(otp.get_device_id(), 'vvegvftndfil');
+    test.finish();
 };
 
-exports['test _parse_parameters_from_response'] = function(beforeExit) {
+exports['test _parse_parameters_from_response'] = function(test, assert) {
     var response = 'h=ckbn7gh0C/qsTciVqcxpQ8yOqWY=\n' +
                    't=2010-12-30T14:30:12Z0264\n' +
                    'otp=vvegefendfulhrrihgvibljnnnbikjhnbrtfjlkltvvg\n' +
@@ -28,9 +29,10 @@ exports['test _parse_parameters_from_response'] = function(beforeExit) {
 
     assert.equal(signature, result[0]);
     assert.equal(query_string, result[1]);
+    test.finish();
 };
 
-exports['test _query_string_to_object'] = function(beforeExit) {
+exports['test _query_string_to_object'] = function(test, assert) {
     var query_string = 't=2010-12-30T14:30:12Z0264&otp=vvegefendfulhrrihgvibljnnnbikjhnbrtfjlkltvvg&nonce=UlVyeUFvU1lVM3FLT0tIeHczWUJpN0&sl=75&timestamp=10222212&sessioncounter=1563&sessionuse=3&status=OK';
     var obj = {
         't': '2010-12-30T14:30:12Z0264',
@@ -47,9 +49,10 @@ exports['test _query_string_to_object'] = function(beforeExit) {
     var result = yubico._query_string_to_object(query_string);
 
     assert.deepEqual(obj, result);
+    test.finish();
 };
 
-exports['test _generate_message_signature'] = function(beforeExit) {
+exports['test _generate_message_signature'] = function(test, assert) {
     var query_string = 'foo=bar&bar=baz';
     var key = 'key1234';
     var signature = 'NDzpNpiUsBXWYtLS+F+BmATz+w4=';
@@ -58,9 +61,10 @@ exports['test _generate_message_signature'] = function(beforeExit) {
     var result = yubico._generate_message_signature(query_string, key);
 
     assert.equal(signature, result);
+    test.finish();
 };
 
-exports['test _generate_query_string'] = function(beforeExit) {
+exports['test _generate_query_string'] = function(test, assert) {
     var otp = 'vvegefendfulhrrihgvibljnnnbikjhnbrtfjlkltvvg';
     var nonce = 'UlVyeUFvU1lVM3FLT0tIeHczWUJpN0';
     var timestamp = true;
@@ -78,4 +82,5 @@ exports['test _generate_query_string'] = function(beforeExit) {
 
     assert.equal(query_string, result1);
     assert.equal(query_string + '&h=' + signature, result2);
+    test.finish();
 };
