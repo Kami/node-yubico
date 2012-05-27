@@ -5,6 +5,10 @@ Node library for validating Yubico One Time Passwords (OTPs) based on the [valid
 
     npm install yubico
 
+# Build Status
+
+[![Build Status](https://secure.travis-ci.org/Kami/node-yubico.png)](http://travis-ci.org/Kami/node-yubico)
+
 # Usage
 
 Create a new instance of the Yubico object and call `verify()` or `verify_multi()` method.
