@@ -1,4 +1,4 @@
-var sys = require('sys');
+var util = require('util');
 
 var sprintf = require('../lib/extern/sprintf').sprintf;
 
@@ -16,7 +16,7 @@ else {
 var mode = argv[0];
 
 if ([ 'single', 'multi' ].indexOf(mode) === -1) {
-    sys.puts('Usage: node example.js single|multi client_id [secret_key|null] otp [otp 2]');
+    util.puts('Usage: node example.js single|multi client_id [secret_key|null] otp [otp 2]');
     process.exit(1);
 }
 
@@ -28,7 +28,7 @@ argv = argv.slice(1);
 if (argv.length !== expected_args) {
     args = (mode === 'single') ? 'single client_id [secret_key] otp' :
                                   'multi client_id [secret_key] otp_1 otp_2';
-    sys.puts(sprintf('Usage: node example.js %s', args));
+    util.puts(sprintf('Usage: node example.js %s', args));
     process.exit(1);
 }
 
@@ -48,9 +48,9 @@ else if (mode === 'multi') {
 
 func.call(yubico, args, function(err, success) {
     if (err) {
-        sys.print('Token validation failed: ' + err.message);
+        util.print('Token validation failed: ' + err.message);
         return;
     }
 
-    sys.print('Success, the provided token is valid!');
+    util.print('Success, the provided token is valid!');
 });
