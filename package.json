@@ -17,13 +17,13 @@
     "example": [ "./example/example.js" ]
   },
   "devDependencies": {
-    "whiskey": "0.6.9"
+    "whiskey": "0.8.3"
   },
   "scripts": {
     "test": "./scripts/tests.sh"
   },
   "engines": {
-      "node": ">= 0.2.0"
+      "node": ">= 0.6.0 <= 0.11.0"
   },
   "main": "index"
 }
