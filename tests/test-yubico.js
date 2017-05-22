@@ -73,7 +73,7 @@ exports['test _generate_query_string'] = function(test, assert) {
     var query_string = 'id=1234&otp=vvegefendfulhrrihgvibljnnnbikjhnbrtfjlkltvvg&nonce=UlVyeUFvU1lVM3FLT0tIeHczWUJpN0&timestamp=1&sl=50&timeout=15';
 
     var yubico1 = new Yubico('1234');
-    var yubico2 = new Yubico('1234', 'key1234');
+    var yubico2 = new Yubico('1234', 'key1234', false);
 
     var signature = yubico2._generate_message_signature(query_string, yubico2._key);
 
